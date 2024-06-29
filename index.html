@@ -8,12 +8,19 @@
 </head>
 <body>
     <div id="script">
+        <!--Implement error handling to manage and inform the user if the product data fails to load with a user-friendly error message.-->
+        <div id="loading">Loading...</div>
+        <div id="error" class="hidden">Failed to load products.</div>
         <div id="product-container" class="hidden">
             <div id="product">
                 <img id="product-image" src="" alt="Product Image">
                 <h2 id="product-name"></h2>
                 <p id="product-price"></p>
                 <p id="product-description"></p>
+            </div>
+            <div id="navigation">
+                <button id="prev-button">Previous</button>
+                <button id="next-button">Next</button>
             </div>
         </div>
     </div>

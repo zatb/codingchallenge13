@@ -1,5 +1,6 @@
 // U36432650
 
+// Implement functionality to fetch product data from the API endpoint and display each product's name, image, price, and description on your webpage.
 document.addEventListener('DOMContentLoaded', () => {
     const API_URL = 'https://course-api.com/react-store-products';
     const loading = document.getElementById('loading');
@@ -27,15 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (products.length === 0) {
                 throw new Error('No products found');
             }
+            // Hide loading and show product container
             loading.classList.add('hidden');
             productContainer.classList.remove('hidden');
             displayProduct();
         } catch (err) {
+            // Hide loading and show error message
             loading.classList.add('hidden');
             error.classList.remove('hidden');
             console.error('Fetch error:', err);
         }
     }
+    
     function displayProduct() {
         const product = products[currentIndex];
         productImage.src = product.image;
@@ -43,4 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
         productPrice.textContent = `$${product.price}`;
         productDescription.textContent = product.description;
     }
-})
+    
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? products.length - 1 : currentIndex - 1;
+        displayProduct();
+    });
+    
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === products.length - 1) ? 0 : currentIndex + 1;
+        displayProduct();
+    });
+    
+    fetchProducts();
+});
