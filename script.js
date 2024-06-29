@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (products.length === 0) {
                 throw new Error('No products found');
             }
-            // Hide loading and show product container
+          
+        // Introduce a loading state that appears while the data is being fetched and disappears once the data is fully loaded or if an error occurs.
             loading.classList.add('hidden');
             productContainer.classList.remove('hidden');
             displayProduct();
         } catch (err) {
-            // Hide loading and show error message
+
             loading.classList.add('hidden');
             error.classList.remove('hidden');
             console.error('Fetch error:', err);
